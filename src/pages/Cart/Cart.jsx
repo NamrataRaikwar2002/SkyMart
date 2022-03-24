@@ -44,10 +44,10 @@ export const Cart = () => {
                         <hr/>
                         <div className="total_amount">
                             <h4>TOTAL AMOUNT</h4>
-                            <h4>1,250</h4>
+                            <h4>₹1,250</h4>
                         </div>
                         <hr/>
-                        <p className="green">You will save &#8377;1,749 on this order</p>
+                        <p className="green">You will save ₹1,749 on this order</p>
                         <div className="place_order">
                             <button className="e_com_btn primary_selected_btn">PLACE ORDER</button>
                         </div>
