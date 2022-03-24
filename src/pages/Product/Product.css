@@ -1,0 +1,165 @@
+.filters {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    padding: 2rem;
+    width: 18rem;
+    height: 34rem;
+    position: sticky;
+    top: 4rem;
+    overflow-y: scroll;
+}
+
+.filter_clear_div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price_div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.product_category,
+.price_slider {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.each_category {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.all_product {
+    display: flex;
+}
+
+.filter_clear {
+    border: none;
+    padding: 0.2rem;
+    color: white;
+    border-radius: var(--btn-radius);
+    background-color: var(--secondary-color);
+}
+
+.product_list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem;
+}
+
+.product_list_item {
+    width: 14em;
+    background-color: white;
+    box-shadow: var(--box-shadow);
+}
+
+
+.card_detail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.4rem;
+    position: relative;
+}
+
+.product_list_section {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    justify-content: center;
+    gap: 2rem;
+    z-index: -1;
+}
+
+.wishlist_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: white;
+    border-radius: 50%;
+    top: -14.5rem;
+    right: 1rem;
+    font-size: 1rem;
+    color: var(--alertError-color);
+}
+
+.mrp {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.horizontal_text {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.price_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.productListImg {
+    width: 100%;
+    height: 15rem;
+    padding: 0.5rem;
+}
+
+
+.productAddToCartbtn {
+    width: 100%;
+    border-radius: 0%;
+}
+
+.discountRating {
+    display: flex;
+    justify-content: space-between;
+}
+
+.star_icon {
+    color: white;
+    font-size: 0.6rem;
+
+}
+
+.ratingStarPara {
+    padding: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: white;
+    background-color: var(--infoGreen-color);
+    border-radius: var(--box-radius);
+
+}
+
+.productHeading {
+    text-align: center;
+}
+
+@media screen and (max-width:1000px) {
+    .filters {
+        width: 15rem;
+        position: sticky;
+        top: 8rem;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .filters {
+        width: 14rem;
+        position: sticky;
+        top: 8rem;
+    }
+}
