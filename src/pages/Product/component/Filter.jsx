@@ -25,7 +25,7 @@ export const Filter = () => {
             className="price_filer"
             id="price_filter_high"
           />
-          <label for="price_filter_high"> Price-Low to High</label>
+          <label htmlFor="price_filter_high"> Price-Low to High</label>
         </div>
         <div>
           <input
@@ -34,45 +34,45 @@ export const Filter = () => {
             className="price_filer"
             id="price_filter_low"
           />
-          <label for="price_filter_low"> Price-High to Low</label>
+          <label htmlFor="price_filter_low"> Price-High to Low</label>
         </div>
       </div>
       <div className="product_category">
         <h3>Category</h3>
         <div className="each_category">
-          <input type="checkbox" name="1" className="earrings" />
-          Deodorants<label></label>
+          <input type="checkbox" name="1" id='deodorant' />
+          <label htmlFor='deodorant'>Deodorants</label>
         </div>
         <div className="each_category">
-          <input type="checkbox" name="1" className="perfumes" />
-          <label for="perfumes"> Perfumes</label>
+          <input type="checkbox" name="1" id='perfumes'/>
+          <label htmlFor="perfumes"> Perfumes</label>
         </div>
         <div className="each_category">
-          <input type="checkbox" name="1" className="watches" />
-          <label for="watches"> Fragrance</label>
+          <input type="checkbox" name="1" id='fragrance' />
+          <label htmlFor="fragrance"> Fragrance</label>
         </div>
-        <div className="each_category">
-          <input type="checkbox" name="1" className="watches" />
-          <label for="watches"> Body Spray</label>
+        <div className="each_category"> 
+          <input type="checkbox" name="1" id='bodySpray' />
+          <label htmlFor="bodySpray"> Body Spray</label>
         </div>
       </div>
       <div className="price_slider">
         <h3>Ratings</h3>
         <div>
           <input type="radio" name="1" className="price_filter" id="4star" />
-          <label for="4star"> 4 Stars & above</label>
+          <label htmlFor="4star"> 4 Stars & above</label>
         </div>
         <div>
           <input type="radio" name="1" className="price_filer" id="3star" />
-          <label for="3star"> 3 Stars & above</label>
+          <label htmlFor="3star"> 3 Stars & above</label>
         </div>
         <div>
           <input type="radio" name="1" className="price_filer" id="2star" />
-          <label for="2star"> 2 Stars & above</label>
+          <label htmlFor="2star"> 2 Stars & above</label>
         </div>
         <div>
           <input type="radio" name="1" className="price_filer" id="1star" />
-          <label for="1star"> 1 Stars & above</label>
+          <label htmlFor="1star"> 1 Stars & above</label>
         </div>
       </div>
     </aside>

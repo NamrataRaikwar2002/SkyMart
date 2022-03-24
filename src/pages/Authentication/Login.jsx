@@ -11,25 +11,27 @@ export const Login = () => {
         <form>
           <div className="login_div">
             <h2 className="createAccount">Login</h2>
-            <label for="login_input">Email address</label>
+            <label htmlFor="emailInput">Email address</label>
             <input
               type="text"
               className="login_input"
               placeholder="username"
+              id="loginInput"
               required
             />
-            <label for="login_input">Password</label>
+            <label htmlfor="passwordInput">Password</label>
             <input
               type="text"
               className="login_input"
               placeholder="Password"
+              id='passwordInput'
               required
             />
             <div className="forgot_password_div">
-              <input type="checkbox" name="1" className="rememberme" required />
-              <label for="rememberme">Remember me</label>
+              <input type="checkbox" name="1" className="rememberme" id='rememberMe' required />
+              <label htmlFor="rememberMe">Remember me</label>
               <a href="#">
-                <span>Forgot your Password?</span>{' '}
+                <span>Forgot your Password?</span>
               </a>
             </div>
             <button type="submit" className="primary_btn btn">

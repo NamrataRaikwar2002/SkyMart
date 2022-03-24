@@ -11,44 +11,49 @@ export const Signup = () => {
         <form>
           <div className="login_div">
             <h2 className="createAccount">Signup</h2>
-            <label for="login_input">First Name</label>
+            <label htmlFor="firstNameinput">First Name</label>
             <input
               type="text"
               className="login_input"
               placeholder="Enter you first name"
+              id='firstNameinput'
               required
             />
-            <label for="login_input">Last Name</label>
+            <label htmlFor="lastNameinput">Last Name</label>
             <input
               type="text"
               className="login_input"
               placeholder="Enter your last name"
+              id='lastNameinput'
               required
             />
-            <label for="login_input">Email address</label>
+            <label htmlFor="emailinput">Email address</label>
             <input
               type="email"
               className="login_input"
               placeholder="username"
+              id='emailinput'
               required
             />
-            <label for="login_input">Password</label>
+            <label htmlFor="passwordinput">Password</label>
             <input
               type="text"
               className="login_input"
               placeholder="Enter Password"
+              id='passwordinput'
               required
             />
-            <label for="login_input">Confirm Password</label>
+            <label htmlFor="confirmPswdinput">Confirm Password</label>
             <input
               type="text"
               className="login_input"
               placeholder="Reenter Password"
+              id='confirmPswdinput'
               required
             />
             <div className="forgot_password_div">
-              <input type="checkbox" name="1" className="rememberme" required />
-              <label for="rememberme">I accept all Terms & Conditions</label>
+              <input type="checkbox" name="1" className="rememberme" id='rememberMe' required />
+              <label htmlFor="rememberMe">I accept all Terms & Conditions</label>
             </div>
             <button type="submit" className="primary_btn btn">
               Create New Account
