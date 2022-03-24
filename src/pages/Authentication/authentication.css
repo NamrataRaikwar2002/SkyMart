@@ -1,0 +1,34 @@
+.login_box {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.login_div {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    box-shadow: var(--box-shadow);
+    width: 28rem;
+    margin-top: 4rem;
+}
+
+.forgot_password_div {
+    display: flex;
+    gap: 1rem;
+}
+
+.login_input {
+    padding: 0.5rem;
+}
+
+.createAccount {
+    display: flex;
+    justify-content: center;
+}
+
+.login_signup_link {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
