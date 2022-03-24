@@ -1,0 +1,84 @@
+:root {
+  --box-shadow: 0px 0px 7px 0px #94a3b8;
+  --search-radius: 10rem;
+  --btn-opacity: 0.8;
+  --home-footer: #1e293b;
+  --infoGreen-color: #388e3c;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content {
+  margin-top: 4rem;
+}
+
+.e_com_btn,
+.horizontal_cart_btn {
+  width: 12rem;
+  border: none;
+  color: white;
+  font-size: medium;
+  padding: 0.5rem;
+  border-radius: var(--box-radius);
+  display: flex;
+  justify-content: center;
+}
+
+.e_com_btn:hover,
+.addto_cart:hover,
+.horizontal_cart_btn:hover {
+  opacity: 0.9;
+}
+
+.horizontal_cart_btn,
+.addto_cart {
+  display: flex;
+  justify-content: center;
+  background-color: var(--secondary-color);
+}
+
+.primary_selected_btn {
+  background-color: var(--primary-color);
+
+}
+
+.secondary_selected_btn {
+  background-color: var(--secondary-color);
+}
+
+.wishlist_btn {
+  border: 2px solid var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.horizontal_card {
+  background-color: white;
+  box-shadow: var(--box-shadow);
+}
+
+input {
+  outline: none;
+}
+
+.mrpdiv {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.green {
+  color: var(--infoGreen-color);
+}
+
+.card_btn,
+.btn {
+  border-radius: 0%;
+}
+
+@media screen and (max-width: 1000px) {
+  .content {
+    margin-top: 8rem;
+  }
+}
