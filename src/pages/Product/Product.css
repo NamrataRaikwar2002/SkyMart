@@ -90,6 +90,7 @@
     right: 1rem;
     font-size: 1rem;
     color: var(--alertError-color);
+    border: none;
 }
 
 .mrp {
@@ -117,6 +118,7 @@
 .productAddToCartbtn {
     width: 100%;
     border-radius: 0%;
+    cursor: pointer;
 }
 
 .discountRating {

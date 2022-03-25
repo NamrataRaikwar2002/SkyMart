@@ -42,6 +42,7 @@
     border: none;
     border-radius: var(--btn-radius);
     color: white;
+    cursor: pointer;
 }
 
 .nav_rightside {
@@ -90,6 +91,14 @@
     position: absolute;
     top: -0.1rem;
     right: 1.5rem;
+}
+
+.textForPrimaryColor {
+    color: var(--primary-color);
+}
+
+Link {
+    cursor: pointer;
 }
 
 @media screen and (max-width: 998px) {
