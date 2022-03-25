@@ -1,11 +1,13 @@
 import React from 'react'
 import { Navbar } from '../../components'
-// import './Home.css'
+import {Link} from 'react-router-dom'
 
 export const Signup = () => {
   return (
     <main className="login_page">
-      <Navbar LoginOrSignup="Login" />
+      <Navbar LoginOrSignup="Login"  
+          address='/login-page'
+      />
 
       <section className="login_box content">
         <form>
@@ -58,12 +60,11 @@ export const Signup = () => {
             <button type="submit" className="primary_btn btn">
               Create New Account
             </button>
-            <a
-              href="/Authentication/login/login.html"
+            <Link to='/login-page'
               className="createAccount login_signup_link"
             >
               Already have an account
-            </a>
+            </Link>
           </div>
         </form>
       </section>

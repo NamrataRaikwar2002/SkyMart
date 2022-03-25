@@ -16,7 +16,7 @@ import { NewArrival } from './component/NewArrival'
 const Home = () => {
   return (
     <>
-      <Navbar LoginOrSignup="Login"/>
+      <Navbar LoginOrSignup="Login" address='/login-page'/>
 
       <section className="home_section zcontent">
         <div className="landing_area">

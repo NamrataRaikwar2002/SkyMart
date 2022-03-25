@@ -1,11 +1,13 @@
 import React from 'react'
 import './Navbar.css'
+import {Link} from 'react-router-dom'
 
-const Navbar = ({ LoginOrSignup }) => {
+const Navbar = ({ LoginOrSignup, address }) => {
   return (
     <div className="nav_div">
       <nav className="navigation">
-        <h2>SkyMart</h2>
+    <Link to='/'>
+        <h2 className='textForPrimaryColor'>SkyMart</h2></Link>
         <div className="search_icon">
           <input
             type="text"
@@ -16,23 +18,22 @@ const Navbar = ({ LoginOrSignup }) => {
           <i className="fa fa-search"></i>
         </div>
         <aside className="nav_rightside">
-          <a href="/product/product.html" className="navbar_link">
-            Product
-          </a>
-          <a href="/Authentication/Login/Login.jsx">
+
+          <Link to='/product-list' className="navbar_link textForPrimaryColor">Product</Link>
+          <Link to={address}>
             <button className="nav_btn navbar_link">{LoginOrSignup}</button>
-          </a>
-          <a href="/wishlist/wishlist.html">
+          </Link>
+          <Link to='/wishlist-page'>
             <i
               className="far fa-heart nav_icon wishlist_nav_icon"
               id="comIcon"
             ></i>
             <p className="wishlist_icon_home_badge icon_badge">0</p>
-          </a>
-          <a href="/cart/cart.html">
+          </Link>
+          <Link to='/cart-page'>
             <i className="fas fa-shopping-cart nav_icon cart_nav_icon"></i>
             <p className="cart_icon_home_badge icon_badge">0</p>
-          </a>
+          </Link>
         </aside>
       </nav>
     </div>

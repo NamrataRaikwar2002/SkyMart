@@ -77,6 +77,10 @@ input {
   border-radius: 0%;
 }
 
+button{
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1000px) {
   .content {
     margin-top: 8rem;

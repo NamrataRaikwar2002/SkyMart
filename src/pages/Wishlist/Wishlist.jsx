@@ -8,7 +8,7 @@ export const Wishlist = () => {
   return (
     <main className="wishlist_page">
             <Navbar
-            LoginOrSignup='Logout' />
+            LoginOrSignup='Logout' address='/' />
 
         <section className="wishlist_products content">
             <div className="wishlist_products_div">
@@ -43,7 +43,6 @@ export const Wishlist = () => {
                 />
                     
                 </div>
-
             </div>
         </section>
     </main>

@@ -3,13 +3,14 @@ import { Navbar } from '../../components'
 import './Product.css'
 import { products } from '../../backend/db/products'
 import { Filter } from './component/Filter'
+import {Link} from 'react-router-dom'
 
 export const ProductList = () => {
   return (
     
     <>
     <main className="product_page">
-      <Navbar LoginOrSignup="Login" />
+      <Navbar LoginOrSignup="Login" address='/login-page' />
         <section class="all_product content">
         <Filter />
           <aside className="product_list">
@@ -23,7 +24,9 @@ export const ProductList = () => {
                       src={productItem.productImg} alt='images'
                     />
                     <div className="card_detail">
-                      <i className="far fa-heart wishlist_icon"></i>
+                    <button className='wishlist_icon'>
+                      <i className="far fa-heart"></i>
+                    </button>
                       <p>{productItem.title}</p>
                       <div className="mrpdiv">
                         <h3>₹{productItem.price}</h3>
@@ -38,11 +41,9 @@ export const ProductList = () => {
                         </p>  
                       </div>
                     </div>
-                    <a href="">
                       <button className="card_btn primary_selected_btn productAddToCartbtn">
                         Add to Cart
                       </button>
-                    </a>
                   </div>
                 )
               })}
