@@ -1,11 +1,12 @@
 import React from 'react'
 import { Navbar } from '../../components'
 import './authentication.css'
+import {Link} from 'react-router-dom'
 
 export const Login = () => {
   return (
     <main className="login_page">
-      <Navbar LoginOrSignup="Signup" />
+      <Navbar LoginOrSignup="Signup" address='/signup-page' />
 
       <section className="login_box content">
         <form>
@@ -30,19 +31,18 @@ export const Login = () => {
             <div className="forgot_password_div">
               <input type="checkbox" name="1" className="rememberme" id='rememberMe' required />
               <label htmlFor="rememberMe">Remember me</label>
-              <a href="#">
+              <Link to='/'>
                 <span>Forgot your Password?</span>
-              </a>
+              </Link>
             </div>
             <button type="submit" className="primary_btn btn">
               Login
             </button>
-            <a
-              href="/Authentication/signup/signup.html"
+            <Link to='/signup-page'
               className="createAccount login_signup_link"
             >
               Create New Account
-            </a>
+            </Link>
           </div>
         </form>
       </section>

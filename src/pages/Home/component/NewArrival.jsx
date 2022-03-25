@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const NewArrival = ({
   newArrivalImg,
@@ -20,7 +21,7 @@ const NewArrival = ({
             <s>{preMrp}</s>
           </div>
           <p className="green">{discount}</p>
-          <button className="card_btn">Shop Now</button>
+          <Link to='/product-list'><button className="card_btn">Shop Now</button></Link> 
         </div>
       </section>
     </div>
