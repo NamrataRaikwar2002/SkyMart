@@ -11,6 +11,8 @@ export const Cart = () => {
         
         <Navbar 
         LoginOrSignup='Login'
+        address='/login-page'
+
         />
         <section className="cart_management content">
             <div className="section_background">
