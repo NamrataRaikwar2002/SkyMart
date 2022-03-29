@@ -7,7 +7,7 @@ export const WishlistCard = (props) => {
       <img className="productListImg" src={props.productImg} alt="images" />
       <div className="card_detail">
          <button>
-         <i class="fa-solid fa-heart wishlist_icon"></i>
+         <i className="fa-solid fa-heart wishlist_icon"></i>
          </button> 
         <p>{props.title}</p>
         <div className="mrpdiv">
@@ -19,7 +19,7 @@ export const WishlistCard = (props) => {
 
           <p className="ratingStarPara">
             {props.rating}
-            <i class="fas fa-star star_icon"></i>
+            <i className="fas fa-star star_icon"></i>
           </p>
         </div>
       </div>
