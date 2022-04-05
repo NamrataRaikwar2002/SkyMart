@@ -103,17 +103,11 @@
     gap: 0.5rem;
 }
 
-.price_container {
-    display: flex;
-    justify-content: space-between;
-}
-
 .productListImg {
     width: 100%;
     height: 15rem;
     padding: 0.5rem;
 }
-
 
 .productAddToCartbtn {
     width: 100%;
@@ -147,7 +141,19 @@
 }
 
 .productHeading {
+    font-size: 1.5rem;
     text-align: center;
+}
+
+.noItemMsg {
+    display: flex;
+    justify-content: center;
+    color: var(--secondary-color);
+    font-size: 2rem;
+}
+
+.loader {
+    color: var(--primary-color);
 }
 
 @media screen and (max-width:1000px) {
