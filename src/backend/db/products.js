@@ -32,7 +32,7 @@ export const products = [
     prePrice: '699',
     discount: '49% off',
     rating: '5',
-    categoryName: 'Deodorant',
+    category: 'Deodorant',
   },
   {
     _id: uuid(),
@@ -42,7 +42,7 @@ export const products = [
     prePrice: '789',
     discount: '34% off',
     rating: '4',
-    categoryName: 'Perfume',
+    category: 'Perfume',
   },
   {
     _id: uuid(),
@@ -52,7 +52,7 @@ export const products = [
     prePrice: '789',
     discount: '59% off',
     rating: '3',
-    categoryName: 'Deodorant',
+    category: 'Deodorant',
   },
   {
     _id: uuid(),
@@ -62,7 +62,7 @@ export const products = [
     prePrice: '899',
     discount: '39% off',
     rating: '4.5',
-    categoryName: 'Fragrance',
+    category: 'Fragrance',
   },
   {
     _id: uuid(),
@@ -72,7 +72,7 @@ export const products = [
     prePrice: '499',
     discount: '59% off',
     rating: '3.5',
-    categoryName: 'Perfume',
+    category: 'Perfume',
   },
   {
     _id: uuid(),
@@ -82,17 +82,17 @@ export const products = [
     prePrice: '999',
     discount: '45% off',
     rating: '4.5',
-    categoryName: 'Deodorant',
+    category: 'Deodorant',
   },
   {
     _id: uuid(),
     productImg: product7Img,
-    title: 'Engage Perfume Body GAS FREE` Spray ',
+    title: 'Engage Perfume Body GAS FREE Spray ',
     price: '1200',
     prePrice: '1649',
     discount: '39% off',
     rating: '5',
-    categoryName: 'Body Spray',
+    category: 'BodySpray',
   },
   {
     _id: uuid(),
@@ -102,7 +102,7 @@ export const products = [
     prePrice: '1209',
     discount: '56% off',
     rating: '3',
-    categoryName: 'Body Spray',
+    category: 'BodySpray',
   },
   {
     _id: uuid(),
@@ -112,7 +112,7 @@ export const products = [
     prePrice: '799',
     discount: '59% off',
     rating: '1',
-    categoryName: 'Perfume',
+    category: 'Perfume',
   },
   {
     _id: uuid(),
@@ -122,7 +122,7 @@ export const products = [
     prePrice: '1099',
     discount: '49% off',
     rating: '2.5',
-    categoryName: 'Body Spray',
+    category: 'BodySpray',
   },
   {
     _id: uuid(),
@@ -132,7 +132,7 @@ export const products = [
     prePrice: '999',
     discount: '49% off',
     rating: '2',
-    categoryName: 'Fragrance',
+    category: 'Fragrance',
   },
   {
     _id: uuid(),
@@ -142,7 +142,7 @@ export const products = [
     prePrice: '899',
     discount: '49% off',
     rating: '1',
-    categoryName: 'Fragrance',
+    category: 'Fragrance',
   },
   {
     _id: uuid(),
@@ -152,7 +152,7 @@ export const products = [
     prePrice: '509',
     discount: '49% off',
     rating: '1.5',
-    categoryName: 'Fragrance',
+    category: 'Fragrance',
   },
   {
     _id: uuid(),
@@ -162,7 +162,7 @@ export const products = [
     prePrice: '999',
     discount: '49% off',
     rating: '2.5',
-    categoryName: 'Body Spray',
+    category: 'BodySpray',
   },
   {
     _id: uuid(),
@@ -172,7 +172,7 @@ export const products = [
     prePrice: '799',
     discount: '49% off',
     rating: '3',
-    categoryName: 'Deodorant',
+    category: 'Deodorant',
   },
   {
     _id: uuid(),
@@ -182,6 +182,6 @@ export const products = [
     prePrice: '909',
     discount: '49% off',
     rating: '3',
-    categoryName: 'Perfume',
+    category: 'Perfume',
   },
 ]
