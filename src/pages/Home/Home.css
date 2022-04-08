@@ -16,6 +16,7 @@
 .home_features {
     width: 15rem;
     height: 12.5rem;
+    box-shadow: var(--box-shadow);
 }
 
 .home_features:hover {
@@ -79,7 +80,7 @@
 
 
 .horizontal_img {
-    height: 12rem;
+    height: 15rem;
     padding: 1rem;
 }
 
