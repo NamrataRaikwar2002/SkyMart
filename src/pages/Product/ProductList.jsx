@@ -4,6 +4,7 @@ import './Product.css'
 import { Filter } from './component/Filter'
 import axios from 'axios'
 import { useFilter } from '../../hooks/context/filterContext'
+
 import {
   PriceFilter,
   RatingFilter,
@@ -36,21 +37,22 @@ export const ProductList = () => {
   const categoryItem = CategoryFilter(ratingItems, filterState)
   const sortedItems = SortFilter(categoryItem, filterState)
 
+
   return (
     <>
       <main className="product_page">
         <Navbar LoginOrSignup="Login" address="/login-page" />
         <section className="all_product content">
           <Filter />
-          <aside className="product_list">
+          <div className="product_list">
             <h3 className="productHeading">
               Total Products: {sortedItems.length}
             </h3>
             <h1 className="noItemMsg loader">{loader}</h1>
-            <h1 className="noItemMsg ">
+            <h1 className="noItemMsg">
               {priceValue == 0 ? 'No Products Available' : ''}
             </h1>
-            <section className="product_list_section">
+            <div className="product_list_section ">
               {sortedItems.map(
                 ({
                   productImg,
@@ -67,10 +69,10 @@ export const ProductList = () => {
                         className="productListImg"
                         src={productImg}
                         alt="images"
-                      />
+                     />
                       <div className="card_detail">
                         <button className="wishlist_icon">
-                          <i className="far fa-heart"></i>
+                          <i className="far fa-heart" ></i>
                         </button>
                         <p>{title}</p>
                         <div className="mrpdiv">
@@ -82,19 +84,20 @@ export const ProductList = () => {
 
                           <p className="ratingStarPara">
                             {rating}
-                            <i className="fas fa-star star_icon"></i>
+                          <i className="fas fa-star star_icon"></i>
                           </p>
                         </div>
                       </div>
-                      <button className="card_btn primary_selected_btn productAddToCartbtn">
+                      <button className="card_btn primary_selected_btn productAddToCartbtn"
+                     >
                         Add to Cart
                       </button>
                     </div>
                   )
                 },
               )}
-            </section>
-          </aside>
+            </div>
+          </div>
         </section>
       </main>
     </>

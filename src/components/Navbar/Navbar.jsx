@@ -19,7 +19,7 @@ const Navbar = ({ LoginOrSignup, address }) => {
         </div>
         <aside className="nav_rightside">
 
-          <Link to='/product-list' className="navbar_link textForPrimaryColor">Product</Link>
+          <Link to='/product-list' className="navbar_link textForPrimaryColor productsText">Products</Link>
           <Link to={address}>
             <button className="nav_btn navbar_link">{LoginOrSignup}</button>
           </Link>
