@@ -11,6 +11,9 @@ body {
   flex-wrap: wrap;
 }
 
+button{
+  cursor: pointer;
+}
 .content {
   margin-top: 4rem;
 }
@@ -29,7 +32,8 @@ body {
 
 .e_com_btn:hover,
 .addto_cart:hover,
-.horizontal_cart_btn:hover {
+.horizontal_cart_btn:hover
+ {
   opacity: 0.9;
 }
 
@@ -75,9 +79,6 @@ input {
 .card_btn,
 .btn {
   border-radius: 0%;
-}
-
-button{
   cursor: pointer;
 }
 

@@ -1,6 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const CartCard = (props) => {
+
+  // const quantityFun = (quantity) => {
+  //   if(quantity === 'quantityInc'){
+      
+  //   }
+  // }
   return (
     <div className=" horizontal_card cartHorizontalCard">
       <section className="horizontal_img_section">
@@ -15,11 +22,13 @@ export const CartCard = (props) => {
           <small>
             Quantity:
             <button className="quantity_btn decrease_btn">-</button>
-            <input type="text" className="quantity_input" value="1" />
+            <input type="text" className="quantity_input" value="1"  />
             <button className="quantity_btn">+</button>
           </small>
           <button className="horizontal_cart_btn">Remove From Cart</button>
+          <Link to='/wishlist-page'>
           <button className="e_com_btn wishlist_btn">Move to Wishlist</button>
+          </Link>
         </div>
       </section>
     </div>

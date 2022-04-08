@@ -20,7 +20,7 @@ export const Login = () => {
               id="loginInput"
               required
             />
-            <label htmlfor="passwordInput">Password</label>
+            <label htmlFor="passwordInput">Password</label>
             <input
               type="text"
               className="login_input"
