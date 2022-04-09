@@ -5,6 +5,7 @@ import App from './App'
 import { makeServer } from './server'
 import { BrowserRouter } from 'react-router-dom'
 import { FilterProvider } from './hooks/context/filterContext'
+import { ProductProvider } from './hooks/context/productContext'
 
 // Call make Server
 makeServer()
@@ -13,7 +14,9 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <FilterProvider>
-        <App />
+        <ProductProvider>
+          <App />
+        </ProductProvider>
       </FilterProvider>
     </BrowserRouter>
   </React.StrictMode>,
