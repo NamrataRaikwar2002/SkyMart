@@ -1,33 +1,65 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { useProduct } from '../../../hooks/context/productContext'
 
-export const WishlistCard = (props) => {
+export const WishlistCard = () => {
+  const { productState, productDispatch } = useProduct()
+  const { wishList } = productState
+
   return (
-    <div className="product_list_item">
-      <img className="productListImg" src={props.productImg} alt="images" />
-      <div className="card_detail">
-         <button className='wishlist_icon'>
-         <i className="fa-solid fa-heart"></i>
-         </button> 
-        <p>{props.title}</p>
-        <div className="mrpdiv">
-          <h3>₹{props.price}</h3>
-          <s>₹{props.prePrice}</s>
-        </div>
-        <div className="discountRating">
-          <p className="green">{props.discount}</p>
+    <>
+      {wishList.map(
+        ({ productImg, price, title, prePrice, discount, rating, _id }) => {
+          return (
+            <div className="product_list_item" key={_id}>
+              <img className="productListImg" src={productImg} alt="images" />
+              <div className="card_detail">
+                <button
+                  className="wishlist_icon"
+                  onClick={() =>
+                    productDispatch({
+                      type: 'REMOVE_FROM_WISHLIST',
+                      payload: { _id: _id },
+                    })
+                  }
+                >
+                  <i className="fa-solid fa-heart"></i>
+                </button>
+                <p>{title}</p>
+                <div className="mrpdiv">
+                  <h3>₹{price}</h3>
+                  <s>₹{prePrice}</s>
+                </div>
+                <div className="discountRating">
+                  <p className="green">{discount}</p>
 
-          <p className="ratingStarPara">
-            {props.rating}
-            <i className="fas fa-star star_icon"></i>
-          </p>
-        </div>
-      </div>
-      <Link to='/wishlist-page'>
-        <button className="card_btn primary_selected_btn productAddToCartbtn" onClick={() => console.log('wishlist')}>
-          Move to Cart
-        </button>
-      </Link>
-    </div>
+                  <p className="ratingStarPara">
+                    {rating}
+                    <i className="fas fa-star star_icon"></i>
+                  </p>
+                </div>
+              </div>
+              <button
+                className="card_btn primary_selected_btn productAddToCartbtn"
+                onClick={() =>
+                  productDispatch({
+                    type: 'MOVE_TO_CART',
+                    payload: {
+                      productImg: productImg,
+                      price: price,
+                      title: title,
+                      prePrice: prePrice,
+                      discount: discount,
+                      _id: _id,
+                    },
+                  })
+                }
+              >
+                Move to Cart
+              </button>
+            </div>
+          )
+        },
+      )}
+    </>
   )
 }
