@@ -63,7 +63,7 @@
 .landing_img {
     width: 100%;
     z-index: -1;
-    filter:hue-rotate(238deg);
+    filter: hue-rotate(238deg);
 }
 
 .wishlist_icon_badge {
@@ -78,9 +78,8 @@
     right: 10.5rem;
 }
 
-
 .horizontal_img {
-    height: 15rem;
+    height: 12rem;
     padding: 1rem;
 }
 

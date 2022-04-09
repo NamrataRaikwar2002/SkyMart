@@ -11,9 +11,10 @@ body {
   flex-wrap: wrap;
 }
 
-button{
+button {
   cursor: pointer;
 }
+
 .content {
   margin-top: 4rem;
 }
@@ -25,15 +26,13 @@ button{
   color: white;
   font-size: medium;
   padding: 0.5rem;
-  border-radius: var(--box-radius);
   display: flex;
   justify-content: center;
 }
 
 .e_com_btn:hover,
 .addto_cart:hover,
-.horizontal_cart_btn:hover
- {
+.horizontal_cart_btn:hover {
   opacity: 0.9;
 }
 

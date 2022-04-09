@@ -44,7 +44,7 @@
     background-color: var(--secondary-color);
 }
 
-.filter_clear:hover{
+.filter_clear:hover {
     opacity: var(--btn-opacity);
 }
 
@@ -98,9 +98,10 @@
     border: none;
 }
 
-.wishlist_icon:hover{
+.wishlist_icon:hover {
     background-color: var(--backgroundhover-color);
 }
+
 .mrp {
     display: flex;
     gap: 0.5rem;
@@ -150,7 +151,6 @@
     font-size: 0.8rem;
     color: white;
     background-color: var(--infoGreen-color);
-    border-radius: var(--box-radius);
 
 }
 
@@ -170,8 +170,12 @@
     color: var(--primary-color);
 }
 
-.card_btn:hover{
+.card_btn:hover {
     opacity: 0.9;
+}
+
+.goToCart {
+    background-color: var(--btnPghover-color);
 }
 
 @media screen and (max-width:1000px) {
