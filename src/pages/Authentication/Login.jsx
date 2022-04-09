@@ -1,13 +1,13 @@
-import React from 'react'
-import { Navbar } from '../../components'
-import './authentication.css'
-import {Link} from 'react-router-dom'
+import React, {useState} from 'react';
+import { Navbar } from '../../components';
+import './authentication.css';
+import {Link} from 'react-router-dom';
 
 export const Login = () => {
+  const [ inputType, setinputType ] = useState('password')
   return (
     <main className="login_page">
       <Navbar LoginOrSignup="Signup" address='/signup-page' />
-
       <section className="login_box content">
         <form>
           <div className="login_div">
@@ -21,13 +21,20 @@ export const Login = () => {
               required
             />
             <label htmlFor="passwordInput">Password</label>
+            <div className='showHideDiv'>
             <input
-              type="text"
-              className="login_input"
+              type={inputType}
+              className="login_input passwordInputDiv"
               placeholder="Password"
               id='passwordInput'
               required
             />
+            <div onClick={() => inputType === 'text' ? setinputType('password') : setinputType('text')}>
+           {inputType === 'text' ?  <p className='hideIcon'><i class="fa-regular fa-eye"></i></p> : <p className='hideIcon'
+           ><i class="fa-regular fa-eye-slash"></i></p>}
+            </div>
+          </div>
+
             <div className="forgot_password_div">
               <input type="checkbox" name="1" className="rememberme" id='rememberMe' required />
               <label htmlFor="rememberMe">Remember me</label>
