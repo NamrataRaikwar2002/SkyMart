@@ -101,8 +101,18 @@ Link {
     cursor: pointer;
 }
 
-.productsText{
+.productsText {
     font-size: 1.2rem;
+}
+
+.feviconImg {
+    width: 2.5rem;
+}
+
+.appNameWithIcon {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
 }
 
 @media screen and (max-width: 998px) {
