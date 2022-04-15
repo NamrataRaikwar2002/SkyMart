@@ -39,16 +39,21 @@ export const productReducer = (productState, productAction) => {
           wishList: wishList.filter(
             (item) => item._id !== productAction.payload._id,
           ),
+          cartList: cartList.map((item) =>
+            item._id === productAction.payload._id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item,
+          ),
         }
-      }else{
+      } else {
         return {
           ...productState,
           wishList: wishList.filter(
             (item) => item._id !== productAction.payload._id,
-            ),
-            cartList: [...cartList, productAction.payload]
-          }
+          ),
+          cartList: [...cartList, productAction.payload],
         }
+      }
     case 'REMOVE_FROM_WISHLIST':
       return {
         ...productState,
