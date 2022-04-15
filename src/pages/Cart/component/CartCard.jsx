@@ -15,8 +15,8 @@ export const CartCard = () => {
           prePrice,
           rating,
           discount,
-          _id,
           quantity,
+          _id,
         }) => {
           return (
             <div className="horizontal_card cartHorizontalCard" key={_id}>
@@ -43,7 +43,6 @@ export const CartCard = () => {
                       -
                     </button>
                     <p className="quantity_input">{quantity}</p>
-                    {/* <p type="text" className="quantity_input" value={quantity} /> */}
                     <button
                       className="quantity_btn"
                       onClick={() =>

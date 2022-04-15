@@ -1,5 +1,5 @@
 export const productReducer = (productState, productAction) => {
-  const { cartList, wishList, quantity } = productState
+  const { cartList, wishList } = productState
   const cartItem = cartList.find(
     (item) => item._id === productAction.payload._id,
   )
@@ -40,14 +40,15 @@ export const productReducer = (productState, productAction) => {
             (item) => item._id !== productAction.payload._id,
           ),
         }
-      }
-      return {
-        ...productState,
-        cartList: [...cartList, productAction.payload],
-        wishList: wishList.filter(
-          (item) => item._id !== productAction.payload._id,
-        ),
-      }
+      }else{
+        return {
+          ...productState,
+          wishList: wishList.filter(
+            (item) => item._id !== productAction.payload._id,
+            ),
+            cartList: [...cartList, productAction.payload]
+          }
+        }
     case 'REMOVE_FROM_WISHLIST':
       return {
         ...productState,

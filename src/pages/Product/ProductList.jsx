@@ -86,6 +86,7 @@ export const ProductList = () => {
                                   prePrice: prePrice,
                                   discount: discount,
                                   rating: rating,
+                                  quantity: quantity,
                                   _id: _id,
                                 },
                               })

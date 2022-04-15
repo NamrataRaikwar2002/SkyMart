@@ -8,7 +8,17 @@ export const WishlistCard = () => {
   return (
     <>
       {wishList.map(
-        ({ productImg, price, title, prePrice, discount, rating, _id }) => {
+        ({
+          productImg,
+          price,
+          title,
+          prePrice,
+          rating,
+          discount,
+          quantity,
+          _id,
+        }) => {
+          console.log(quantity)
           return (
             <div className="product_list_item" key={_id}>
               <img className="productListImg" src={productImg} alt="images" />
@@ -31,7 +41,6 @@ export const WishlistCard = () => {
                 </div>
                 <div className="discountRating">
                   <p className="green">{discount}</p>
-
                   <p className="ratingStarPara">
                     {rating}
                     <i className="fas fa-star star_icon"></i>
@@ -49,6 +58,8 @@ export const WishlistCard = () => {
                       title: title,
                       prePrice: prePrice,
                       discount: discount,
+                      rating: rating,
+                      quantity: quantity,
                       _id: _id,
                     },
                   })
