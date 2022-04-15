@@ -16,7 +16,7 @@ import { NewArrival } from './component/NewArrival'
 const Home = () => {
   return (
     <>
-      <Navbar LoginOrSignup="Login" address='/login-page'/>
+      <Navbar LoginOrSignup="Login" address="/login-page" />
 
       <section className="home_section zcontent">
         <div className="landing_area">
@@ -28,21 +28,25 @@ const Home = () => {
           <LandingFeature
             featureCardImg={deodorantImg}
             featureCardName="Deodorants"
+            itemCategory="Deodorants"
           />
 
           <LandingFeature
             featureCardImg={bodySprayImg}
             featureCardName="Body Spray"
+            itemCategory="BODYSPRAY"
           />
 
           <LandingFeature
             featureCardImg={perfumeImg}
             featureCardName="Perfume"
+            itemCategory="PERFUME"
           />
 
           <LandingFeature
             featureCardImg={fragranceImg}
             featureCardName="Fragrance"
+            itemCategory="FRAGRANCE"
           />
         </div>
         <h1 className="newoffer_heading">New Offers</h1>
