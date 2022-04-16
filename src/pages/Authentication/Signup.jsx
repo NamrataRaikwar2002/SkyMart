@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Navbar } from '../../components'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export const Signup = () => {
+  const [inputType, setinputType] = useState({
+    passwordType: 'password',
+    confirmpaswd: 'password',
+  })
   return (
     <main className="login_page">
-      <Navbar LoginOrSignup="Login"  
-          address='/login-page'
-      />
+      <Navbar LoginOrSignup="Login" address="/login-page" />
 
       <section className="login_box content">
         <form>
@@ -18,7 +20,7 @@ export const Signup = () => {
               type="text"
               className="login_input"
               placeholder="Enter you first name"
-              id='firstNameinput'
+              id="firstNameinput"
               required
             />
             <label htmlFor="lastNameinput">Last Name</label>
@@ -26,7 +28,7 @@ export const Signup = () => {
               type="text"
               className="login_input"
               placeholder="Enter your last name"
-              id='lastNameinput'
+              id="lastNameinput"
               required
             />
             <label htmlFor="emailinput">Email address</label>
@@ -34,35 +36,84 @@ export const Signup = () => {
               type="email"
               className="login_input"
               placeholder="username"
-              id='emailinput'
+              id="emailinput"
               required
             />
             <label htmlFor="passwordinput">Password</label>
-            <input
-              type="text"
-              className="login_input"
-              placeholder="Enter Password"
-              id='passwordinput'
-              required
-            />
+            <div className="showHideDiv">
+              <input
+                type={inputType.passwordType}
+                className="login_input passwordInputDiv"
+                placeholder="Enter Password"
+                id="passwordinput"
+                required
+              />
+              <div
+                onClick={() =>
+                  inputType.passwordType === 'text'
+                    ? setinputType({ ...inputType, passwordType: 'password' })
+                    : setinputType({ ...inputType, passwordType: 'text' })
+                }
+              >
+                {inputType.passwordType === 'text' ? (
+                  <p className="hideIcon">
+                    <i class="fa-regular fa-eye"></i>
+                  </p>
+                ) : (
+                  <p className="hideIcon">
+                    <i class="fa-regular fa-eye-slash"></i>
+                  </p>
+                )}
+
+              </div>
+            </div>
+
+
             <label htmlFor="confirmPswdinput">Confirm Password</label>
-            <input
-              type="text"
-              className="login_input"
-              placeholder="Reenter Password"
-              id='confirmPswdinput'
-              required
-            />
+            <div className="showHideDiv">
+              <input
+                type={inputType.confirmpaswd}
+                className="login_input passwordInputDiv"
+                placeholder="Reenter Password"
+                id="confirmPswdinput"
+                required
+              />
+              {
+                <div
+                  onClick={() =>
+                    inputType.confirmpaswd === 'text'
+                      ? setinputType({ ...inputType, confirmpaswd: 'password' })
+                      : setinputType({ ...inputType, confirmpaswd: 'text' })
+                  }
+                >
+                  {inputType.confirmpaswd === 'text' ? (
+                    <p className="hideIcon">
+                      <i class="fa-regular fa-eye"></i>
+                    </p>
+                  ) : (
+                    <p className="hideIcon">
+                      <i class="fa-regular fa-eye-slash"></i>
+                    </p>
+                  )}
+                </div>
+              }
+            </div>
             <div className="forgot_password_div">
-              <input type="checkbox" name="1" className="rememberme" id='rememberMe' required />
-              <label htmlFor="rememberMe">I accept all Terms & Conditions</label>
+              <input
+                type="checkbox"
+                name="1"
+                className="rememberme"
+                id="rememberMe"
+                required
+              />
+              <label htmlFor="rememberMe">
+                I accept all Terms & Conditions
+              </label>
             </div>
             <button type="submit" className="primary_btn btn">
               Create New Account
             </button>
-            <Link to='/login-page'
-              className="createAccount login_signup_link"
-            >
+            <Link to="/login-page" className="createAccount login_signup_link">
               Already have an account
             </Link>
           </div>
