@@ -16,8 +16,22 @@ const filterReducer = (filterState, filterAction) => {
       return { ...filterState, Perfume: filterAction.payload }
     case 'FRAGRANCE':
       return { ...filterState, Fragrance: filterAction.payload }
+    case 'CLEAR_CATEGORY':
+      let updatedCategory = { ...filterState }
+      const categories = Object.entries(filterState).filter(
+        ([key, value]) => typeof value === 'boolean',
+      )
+      const formCategoryObj = Object.fromEntries(categories)
+      for (let key in formCategoryObj) {
+        if (formCategoryObj[key] == true) {
+          updatedCategory = { ...formCategoryObj, [key]: false }
+          return { ...filterState, ...updatedCategory }
+        }
+      }
+
     case 'BODYSPRAY':
       return { ...filterState, BodySpray: filterAction.payload }
+
     case 'CLEAR':
       return {
         ...filterState,
