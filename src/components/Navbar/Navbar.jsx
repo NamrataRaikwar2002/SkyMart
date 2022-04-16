@@ -11,7 +11,7 @@ const Navbar = ({ LoginOrSignup, address }) => {
     <div className="nav_div">
       <nav className="navigation">
         <Link to="/" className="appNameWithIcon">
-          <img src={feviconImg} alt="fevicon" className="feviconImg" />
+          <img src='/fevicon.ico' alt="fevicon" className="feviconImg" />
           <h2 className="textForPrimaryColor">SkyMart</h2>
         </Link>
         <div className="search_icon">
