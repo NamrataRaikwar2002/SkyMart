@@ -2,7 +2,6 @@ const CategoryFilter = (
   products,
   { Deodorant, Perfume, Fragrance, BodySpray },
 ) => {
-  // console.log('line 2',products);
   let allCategoryList = []
   if (
     Deodorant === false &&

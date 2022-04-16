@@ -33,6 +33,7 @@ export const products = [
     discount: '49% off',
     rating: '5',
     category: 'Deodorant',
+    quantity: 1,
   },
   {
     _id: uuid(),
@@ -43,6 +44,7 @@ export const products = [
     discount: '34% off',
     rating: '4',
     category: 'Perfume',
+    quantity: 1,
   },
   {
     _id: uuid(),
@@ -53,6 +55,7 @@ export const products = [
     discount: '59% off',
     rating: '3',
     category: 'Deodorant',
+    quantity: 1,
   },
   {
     _id: uuid(),
@@ -63,6 +66,7 @@ export const products = [
     discount: '39% off',
     rating: '4.5',
     category: 'Fragrance',
+    quantity: 1,
   },
   {
     _id: uuid(),
@@ -73,6 +77,7 @@ export const products = [
     discount: '59% off',
     rating: '3.5',
     category: 'Perfume',
+    quantity: 1,
   },
   {
     _id: uuid(),
@@ -83,6 +88,7 @@ export const products = [
     discount: '45% off',
     rating: '4.5',
     category: 'Deodorant',
+    quantity: 1,
   },
   {
     _id: uuid(),
@@ -93,6 +99,7 @@ export const products = [
     discount: '39% off',
     rating: '5',
     category: 'BodySpray',
+    quantity: 1,
   },
   {
     _id: uuid(),
@@ -103,6 +110,7 @@ export const products = [
     discount: '56% off',
     rating: '3',
     category: 'BodySpray',
+    quantity: 1,
   },
   {
     _id: uuid(),
@@ -113,6 +121,7 @@ export const products = [
     discount: '59% off',
     rating: '1',
     category: 'Perfume',
+    quantity: 1,
   },
   {
     _id: uuid(),
@@ -123,6 +132,7 @@ export const products = [
     discount: '49% off',
     rating: '2.5',
     category: 'BodySpray',
+    quantity: 1,
   },
   {
     _id: uuid(),
@@ -133,6 +143,7 @@ export const products = [
     discount: '49% off',
     rating: '2',
     category: 'Fragrance',
+    quantity: 1,
   },
   {
     _id: uuid(),
@@ -143,6 +154,7 @@ export const products = [
     discount: '49% off',
     rating: '1',
     category: 'Fragrance',
+    quantity: 1,
   },
   {
     _id: uuid(),
@@ -153,16 +165,18 @@ export const products = [
     discount: '49% off',
     rating: '1.5',
     category: 'Fragrance',
+    quantity: 1,
   },
   {
     _id: uuid(),
     productImg: newfoggImg,
-    title: 'FOGG 1 Royal and 1 Napoleon Deodorant Combo',
+    title: 'FOGG 1 Royal and 1 Napoleon Deodorant',
     price: '670',
     prePrice: '999',
     discount: '49% off',
     rating: '2.5',
     category: 'BodySpray',
+    quantity: 1,
   },
   {
     _id: uuid(),
@@ -173,6 +187,7 @@ export const products = [
     discount: '49% off',
     rating: '3',
     category: 'Deodorant',
+    quantity: 1,
   },
   {
     _id: uuid(),
@@ -183,5 +198,6 @@ export const products = [
     discount: '49% off',
     rating: '3',
     category: 'Perfume',
+    quantity: 1,
   },
 ]

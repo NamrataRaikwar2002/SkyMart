@@ -1,8 +1,11 @@
 import React from 'react'
 import './Navbar.css'
 import {Link} from 'react-router-dom'
+import { useProduct } from '../../hooks/context/productContext'
 
 const Navbar = ({ LoginOrSignup, address }) => {
+  const {productState} = useProduct();
+  const {cartList, wishList} = productState;
   return (
     <div className="nav_div">
       <nav className="navigation">
@@ -28,11 +31,11 @@ const Navbar = ({ LoginOrSignup, address }) => {
               className="far fa-heart nav_icon wishlist_nav_icon"
               id="comIcon"
             ></i>
-            <p className="wishlist_icon_home_badge icon_badge">0</p>
+            <p className="wishlist_icon_home_badge icon_badge">{wishList.length}</p>
           </Link>
           <Link to='/cart-page'>
             <i className="fas fa-shopping-cart nav_icon cart_nav_icon"></i>
-            <p className="cart_icon_home_badge icon_badge">0</p>
+            <p className="cart_icon_home_badge icon_badge">{cartList.length}</p>
           </Link>
         </aside>
       </nav>
