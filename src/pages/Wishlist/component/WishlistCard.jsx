@@ -18,7 +18,6 @@ export const WishlistCard = () => {
           quantity,
           _id,
         }) => {
-          console.log(quantity)
           return (
             <div className="product_list_item" key={_id}>
               <img className="productListImg" src={productImg} alt="images" />
