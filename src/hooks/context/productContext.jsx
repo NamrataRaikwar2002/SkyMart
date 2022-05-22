@@ -6,7 +6,7 @@ const useProduct = () => useContext(productContext)
 
 const ProductProvider = ({ children }) => {
   const [productState, productDispatch] = useReducer(productReducer, {
-    cartList: [],
+    cart: [],
     wishList: [],
   })
   return (

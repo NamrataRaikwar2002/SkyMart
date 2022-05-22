@@ -1,13 +1,22 @@
 import React from 'react'
 import { useProduct } from '../../../hooks/context/productContext'
+import { removeFromCart } from '../../../service/cartService/removeFromCart'
+import { useAuth } from '../../../hooks/context/authContext'
 
 export const CartCard = () => {
   const { productState, productDispatch } = useProduct()
-  const { cartList } = productState
+  const { cart } = productState
+  const {
+    userDetail: { token },
+  } = useAuth()
+
+  const removeFromCartHandler = (_id) => {
+    removeFromCart(_id, token, productDispatch)
+  }
 
   return (
     <>
-      {cartList.map(
+      {cart.map(
         ({
           productImg,
           price,
@@ -57,12 +66,7 @@ export const CartCard = () => {
                   </small>
                   <button
                     className="horizontal_cart_btn"
-                    onClick={() =>
-                      productDispatch({
-                        type: 'REMOVE_FROM_CART',
-                        payload: { _id: _id },
-                      })
-                    }
+                    onClick={() => removeFromCartHandler(_id)}
                   >
                     Remove From Cart
                   </button>
