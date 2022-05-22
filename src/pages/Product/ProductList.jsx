@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useFilter } from '../../hooks/context/filterContext'
 import { useProduct } from '../../hooks/context/productContext'
 import { addToCart } from '../../service/cartService/addToCart'
+import { useNavigate } from 'react-router'
 import {
   PriceFilter,
   RatingFilter,
@@ -21,6 +22,7 @@ export const ProductList = () => {
   const [loader, setloader] = useState('')
   const { productState, productDispatch } = useProduct()
   const { wishList, cart } = productState
+  const navigate = useNavigate()
 
   const {
     userDetail: { token },
@@ -48,13 +50,21 @@ export const ProductList = () => {
   const sortedItems = SortFilter(categoryItem, filterState)
 
   const addToCartHandler = (product) => {
-    addToCart(product, token, productDispatch)
+    if(token){
+      addToCart(product, token, productDispatch)
+    }else{
+      navigate('/login-page')
+    }
   }
 
   const addToWishlistHandler = (product) => {
     const checkProduct = wishList.some((item) => item._id === product._id)
-    if (!checkProduct) {
-      addToWishlist(product, token, productDispatch)
+    if(token){
+      if (!checkProduct) {
+        addToWishlist(product, token, productDispatch)
+      }
+    }else{
+      navigate('/login-page')
     }
   }
 
