@@ -1,10 +1,17 @@
 import React from 'react'
 import { useProduct } from '../../../hooks/context/productContext'
-
+import { removeFromWishlist } from '../../../service/wishlisService/removeFromWishlist'
+import { useAuth } from '../../../hooks/context/authContext'
 export const WishlistCard = () => {
   const { productState, productDispatch } = useProduct()
   const { wishList } = productState
+  const {
+    userDetail: { token },
+  } = useAuth()
 
+  const removeWishlistHandler = (_id) => {
+    removeFromWishlist(_id, token, productDispatch)
+  }
   return (
     <>
       {wishList.map(
@@ -24,12 +31,7 @@ export const WishlistCard = () => {
               <div className="card_detail">
                 <button
                   className="wishlist_icon"
-                  onClick={() =>
-                    productDispatch({
-                      type: 'REMOVE_FROM_WISHLIST',
-                      payload: { _id: _id },
-                    })
-                  }
+                  onClick={() => removeWishlistHandler(_id)}
                 >
                   <i className="fa-solid fa-heart"></i>
                 </button>

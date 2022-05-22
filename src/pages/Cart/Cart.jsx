@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom'
 
 export const Cart = () => {
   const { productState } = useProduct()
-  const { cartList } = productState
-  const totalPrice = cartList.reduce(
+  const { cart } = productState
+  const totalPrice = cart.reduce(
     (total, item) => (total = (total + Number(item.prePrice)) * item.quantity),
     0,
   )
@@ -17,13 +17,13 @@ export const Cart = () => {
 
   return (
     <main className="cart_page">
-      <Navbar LoginOrSignup="Login" address="/login-page" />
+      <Navbar />
       <section className="cart_management content">
-        <h2 className="productHeading">MY CART({cartList.length})</h2>
-        {cartList.length >= 1 ? (
+        <h2 className="productHeading">MY CART({cart.length})</h2>
+        {cart.length >= 1 ? (
           <>
             <div className="section_background">
-              <div className="cartListDiv">
+              <div className="cartDiv">
                 <CartCard />
               </div>
 
@@ -33,7 +33,7 @@ export const Cart = () => {
                   <hr />
                   <div className="price_details">
                     <div className="each_price_detail price">
-                      Price({cartList.length} item)
+                      Price({cart.length} item)
                       <p>₹{totalPrice}</p>
                     </div>
                     <div className="each_price_detail discount">

@@ -1,53 +1,127 @@
-import React, {useState} from 'react';
-import { Navbar } from '../../components';
-import './authentication.css';
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react'
+import { Navbar } from '../../components'
+import './authentication.css'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { useAuth } from '../../hooks/context/authContext'
+import { toast } from 'react-toastify'
 
 export const Login = () => {
-  const [ inputType, setinputType ] = useState('password')
+  const navigate = useNavigate()
+  const [inputType, setinputType] = useState('password')
+  const [loginUser, setLoginUser] = useState({ email: '', password: '' })
+  const { email, password } = loginUser
+  const { userDispatch } = useAuth()
+
+  const guestUserHandler = (e) => {
+    e.preventDefault()
+    setLoginUser({
+      ...loginUser,
+      email: 'adarshbalika@gmail.com',
+      password: 'adarshbalika',
+    })
+  }
+
+  const loginHandler = (e) => {
+    e.preventDefault()
+    loginUserHandler(email, password)
+  }
+
+  const loginUserHandler = async (email, password) => {
+    if (email && password) {
+      try {
+        const response = await axios.post('/api/auth/login', {
+          email,
+          password,
+        })
+        if (response.status === 200) {
+          localStorage.setItem('user', JSON.stringify(response.data.foundUser))
+          localStorage.setItem('token', response.data.encodedToken)
+          userDispatch({
+            type: 'LOGIN',
+            payload: {
+              user: response.data.foundUser,
+              token: response.data.encodedToken,
+            },
+          })
+          navigate('/')
+          toast.success('LoggedIn successfully  ')
+        } else {
+          toast.error('Something went wrong')
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    } else {
+      toast.warning('Please fill the fields')
+    }
+  }
+
   return (
     <main className="login_page">
-      <Navbar LoginOrSignup="Signup" address='/signup-page' />
+      <Navbar />
       <section className="login_box content">
         <form>
           <div className="login_div">
             <h2 className="createAccount">Login</h2>
-            <label htmlFor="emailInput">Email address</label>
+            <label htmlFor="emailInput">Email Address</label>
             <input
               type="text"
               className="login_input"
-              placeholder="username"
+              placeholder="Enter your email"
               id="loginInput"
+              value={email}
+              onChange={(e) =>
+                setLoginUser({ ...loginUser, email: e.target.value })
+              }
               required
             />
             <label htmlFor="passwordInput">Password</label>
-            <div className='showHideDiv'>
-            <input
-              type={inputType}
-              className="login_input passwordInputDiv"
-              placeholder="Password"
-              id='passwordInput'
-              required
-            />
-            <div onClick={() => inputType === 'text' ? setinputType('password') : setinputType('text')}>
-           {inputType === 'text' ?  <p className='hideIcon'><i class="fa-regular fa-eye"></i></p> : <p className='hideIcon'
-           ><i class="fa-regular fa-eye-slash"></i></p>}
+            <div className="showHideDiv">
+              <input
+                type={inputType}
+                className="login_input passwordInputDiv"
+                placeholder="Password"
+                id="passwordInput"
+                value={password}
+                onChange={(e) =>
+                  setLoginUser({ ...loginUser, password: e.target.value })
+                }
+                required
+              />
+              <div
+                onClick={() =>
+                  inputType === 'text'
+                    ? setinputType('password')
+                    : setinputType('text')
+                }
+              >
+                {inputType === 'text' ? (
+                  <p className="hideIcon">
+                    <i className="fa-regular fa-eye"></i>
+                  </p>
+                ) : (
+                  <p className="hideIcon">
+                    <i className="fa-regular fa-eye-slash"></i>
+                  </p>
+                )}
+              </div>
             </div>
-          </div>
-
-            <div className="forgot_password_div">
-              <input type="checkbox" name="1" className="rememberme" id='rememberMe' required />
-              <label htmlFor="rememberMe">Remember me</label>
-              <Link to='/'>
-                <span>Forgot your Password?</span>
-              </Link>
-            </div>
-            <button type="submit" className="primary_btn btn">
+            <button
+              type="submit"
+              className="primary_btn btn"
+              onClick={guestUserHandler}
+            >
+              Guest User
+            </button>
+            <button
+              type="submit"
+              className="primary_btn btn"
+              onClick={loginHandler}
+            >
               Login
             </button>
-            <Link to='/signup-page'
-              className="createAccount login_signup_link"
-            >
+            <Link to="/signup-page" className="createAccount login_signup_link">
               Create New Account
             </Link>
           </div>

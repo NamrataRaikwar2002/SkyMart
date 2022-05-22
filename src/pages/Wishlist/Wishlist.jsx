@@ -12,7 +12,7 @@ export const Wishlist = () => {
 
   return (
     <main className="wishlist_page">
-      <Navbar LoginOrSignup="Logout" address="/" />
+      <Navbar />
 
       <section className="wishlist_products content">
         <div className="wishlist_products_div">
