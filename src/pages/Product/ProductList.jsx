@@ -5,6 +5,7 @@ import { Filter } from './component/Filter'
 import axios from 'axios'
 import { useFilter } from '../../hooks/context/filterContext'
 import { useProduct } from '../../hooks/context/productContext'
+import { addToCart } from '../../service/cartService/addToCart'
 import {
   PriceFilter,
   RatingFilter,
@@ -12,12 +13,18 @@ import {
   CategoryFilter,
 } from '../../utilities'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../hooks/context/authContext'
+import { addToWishlist } from '../../service/wishlisService/addToWishlist'
 
 export const ProductList = () => {
   const [res, setRes] = useState([])
   const [loader, setloader] = useState('')
   const { productState, productDispatch } = useProduct()
-  const { wishList, cartList } = productState
+  const { wishList, cart } = productState
+
+  const {
+    userDetail: { token },
+  } = useAuth()
 
   const { filterState } = useFilter()
   const { priceValue } = filterState
@@ -40,10 +47,21 @@ export const ProductList = () => {
   const categoryItem = CategoryFilter(ratingItems, filterState)
   const sortedItems = SortFilter(categoryItem, filterState)
 
+  const addToCartHandler = (product) => {
+    addToCart(product, token, productDispatch)
+  }
+
+  const addToWishlistHandler = (product) => {
+    const checkProduct = wishList.some((item) => item._id === product._id)
+    if (!checkProduct) {
+      addToWishlist(product, token, productDispatch)
+    }
+  }
+
   return (
     <>
       <main className="product_page">
-        <Navbar LoginOrSignup="Login" address="/login-page" />
+        <Navbar />
         <section className="all_product content">
           <Filter />
           <div className="product_list">
@@ -77,18 +95,15 @@ export const ProductList = () => {
                           <button
                             className="wishlist_icon"
                             onClick={() =>
-                              productDispatch({
-                                type: 'ADD_TO_WISHLIST',
-                                payload: {
-                                  productImg: productImg,
-                                  price: price,
-                                  title: title,
-                                  prePrice: prePrice,
-                                  discount: discount,
-                                  rating: rating,
-                                  quantity: quantity,
-                                  _id: _id,
-                                },
+                              addToWishlistHandler({
+                                productImg,
+                                price,
+                                title,
+                                prePrice,
+                                discount,
+                                rating,
+                                quantity,
+                                _id,
                               })
                             }
                           >
@@ -113,7 +128,7 @@ export const ProductList = () => {
                           </div>
                         </div>
 
-                        {cartList.find((item) => item._id === _id) ? (
+                        {cart.find((item) => item._id === _id) ? (
                           <Link to="/cart-page">
                             <button className="card_btn primary_selected_btn productAddToCartbtn goToCart">
                               Go to Cart
@@ -123,18 +138,15 @@ export const ProductList = () => {
                           <button
                             className="card_btn primary_selected_btn productAddToCartbtn"
                             onClick={() =>
-                              productDispatch({
-                                type: 'ADD_TO_CART',
-                                payload: {
-                                  productImg: productImg,
-                                  price: price,
-                                  title: title,
-                                  prePrice: prePrice,
-                                  discount: discount,
-                                  rating: rating,
-                                  quantity: quantity,
-                                  _id: _id,
-                                },
+                              addToCartHandler({
+                                productImg,
+                                price,
+                                title,
+                                prePrice,
+                                discount,
+                                rating,
+                                quantity,
+                                _id,
                               })
                             }
                           >
