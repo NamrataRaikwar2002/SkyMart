@@ -1,15 +1,79 @@
 import React, { useState } from 'react'
 import { Navbar } from '../../components'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
 export const Signup = () => {
   const [inputType, setinputType] = useState({
     passwordType: 'password',
     confirmpaswd: 'password',
   })
+  const [signupUser, setSignupUser] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  })
+  const navigate = useNavigate()
+  const { firstName, lastName, email, password, confirmPassword } = signupUser
+
+  const signupHandler = (e) => {
+    e.preventDefault()
+    signupUserHandler(email, password, firstName)
+  }
+
+  const checkPassword = () => {
+    if (password !== confirmPassword) {
+      toast.error('The passwords entered do not match')
+    } else {
+      return true
+    }
+  }
+
+  const signupUserHandler = async (email, password, firstName) => {
+    if (firstName && lastName && email && password && confirmPassword) {
+      if (checkPassword()) {
+        try {
+          const response = await axios.post('/api/auth/signup', {
+            email,
+            password,
+            firstName,
+          })
+          navigate('/')
+          toast.success(
+            'Congratulations, your account has been successfully created!',
+          )
+          console.log(response)
+          if (response.status === 201) {
+            localStorage.setItem(
+              'user',
+              JSON.stringify(response.data.createdUser),
+            )
+            localStorage.setItem('token', response.data.encodedToken)
+            userDispatch({
+              type: 'SIGNUP',
+              payload: {
+                user: response.data.createdUser,
+                token: response.data.encodedToken,
+              },
+            })
+          } else {
+            toast.error('Something went wrong')
+          }
+        } catch (error) {
+          console.error(error)
+        }
+      }
+    } else {
+      toast.warning('Please fill the fields')
+    }
+  }
+
   return (
     <main className="login_page">
-      <Navbar LoginOrSignup="Login" address="/login-page" />
+      <Navbar />
 
       <section className="login_box content">
         <form>
@@ -21,6 +85,10 @@ export const Signup = () => {
               className="login_input"
               placeholder="Enter you first name"
               id="firstNameinput"
+              value={firstName}
+              onChange={(e) =>
+                setSignupUser({ ...signupUser, firstName: e.target.value })
+              }
               required
             />
             <label htmlFor="lastNameinput">Last Name</label>
@@ -29,14 +97,22 @@ export const Signup = () => {
               className="login_input"
               placeholder="Enter your last name"
               id="lastNameinput"
+              value={lastName}
+              onChange={(e) =>
+                setSignupUser({ ...signupUser, lastName: e.target.value })
+              }
               required
             />
             <label htmlFor="emailinput">Email address</label>
             <input
               type="email"
               className="login_input"
-              placeholder="username"
+              placeholder="Enter your email"
               id="emailinput"
+              value={email}
+              onChange={(e) =>
+                setSignupUser({ ...signupUser, email: e.target.value })
+              }
               required
             />
             <label htmlFor="passwordinput">Password</label>
@@ -46,6 +122,10 @@ export const Signup = () => {
                 className="login_input passwordInputDiv"
                 placeholder="Enter Password"
                 id="passwordinput"
+                value={password}
+                onChange={(e) =>
+                  setSignupUser({ ...signupUser, password: e.target.value })
+                }
                 required
               />
               <div
@@ -57,17 +137,15 @@ export const Signup = () => {
               >
                 {inputType.passwordType === 'text' ? (
                   <p className="hideIcon">
-                    <i class="fa-regular fa-eye"></i>
+                    <i className="fa-regular fa-eye"></i>
                   </p>
                 ) : (
                   <p className="hideIcon">
-                    <i class="fa-regular fa-eye-slash"></i>
+                    <i className="fa-regular fa-eye-slash"></i>
                   </p>
                 )}
-
               </div>
             </div>
-
 
             <label htmlFor="confirmPswdinput">Confirm Password</label>
             <div className="showHideDiv">
@@ -76,6 +154,13 @@ export const Signup = () => {
                 className="login_input passwordInputDiv"
                 placeholder="Reenter Password"
                 id="confirmPswdinput"
+                value={confirmPassword}
+                onChange={(e) =>
+                  setSignupUser({
+                    ...signupUser,
+                    confirmPassword: e.target.value,
+                  })
+                }
                 required
               />
               {
@@ -88,29 +173,21 @@ export const Signup = () => {
                 >
                   {inputType.confirmpaswd === 'text' ? (
                     <p className="hideIcon">
-                      <i class="fa-regular fa-eye"></i>
+                      <i className="fa-regular fa-eye"></i>
                     </p>
                   ) : (
                     <p className="hideIcon">
-                      <i class="fa-regular fa-eye-slash"></i>
+                      <i className="fa-regular fa-eye-slash"></i>
                     </p>
                   )}
                 </div>
               }
             </div>
-            <div className="forgot_password_div">
-              <input
-                type="checkbox"
-                name="1"
-                className="rememberme"
-                id="rememberMe"
-                required
-              />
-              <label htmlFor="rememberMe">
-                I accept all Terms & Conditions
-              </label>
-            </div>
-            <button type="submit" className="primary_btn btn">
+            <button
+              type="submit"
+              className="primary_btn btn"
+              onClick={signupHandler}
+            >
               Create New Account
             </button>
             <Link to="/login-page" className="createAccount login_signup_link">
