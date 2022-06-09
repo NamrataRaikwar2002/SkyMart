@@ -3,6 +3,7 @@ import { Navbar } from '../../components'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { useAuth } from '../../hooks/context/authContext'
 
 export const Signup = () => {
   const [inputType, setinputType] = useState({
@@ -17,6 +18,7 @@ export const Signup = () => {
     confirmPassword: '',
   })
   const navigate = useNavigate()
+  const { userDispatch } = useAuth()
   const { firstName, lastName, email, password, confirmPassword } = signupUser
 
   const signupHandler = (e) => {
@@ -41,17 +43,13 @@ export const Signup = () => {
             password,
             firstName,
           })
-          navigate('/')
-          toast.success(
-            'Congratulations, your account has been successfully created!',
-          )
-          console.log(response)
           if (response.status === 201) {
             localStorage.setItem(
               'user',
               JSON.stringify(response.data.createdUser),
             )
             localStorage.setItem('token', response.data.encodedToken)
+            navigate(-2)
             userDispatch({
               type: 'SIGNUP',
               payload: {
@@ -59,6 +57,9 @@ export const Signup = () => {
                 token: response.data.encodedToken,
               },
             })
+            toast.success(
+              'Congratulations, your account has been successfully created!',
+            )
           } else {
             toast.error('Something went wrong')
           }
@@ -74,7 +75,6 @@ export const Signup = () => {
   return (
     <main className="login_page">
       <Navbar />
-
       <section className="login_box content">
         <form>
           <div className="login_div">
