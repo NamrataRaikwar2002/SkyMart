@@ -2,7 +2,7 @@ import React from 'react'
 import { useFilter } from '../../../hooks/context/filterContext'
 import { products } from '../../../backend/db/products'
 
-export const Filter = () => {
+export const Filter = ({ sideBar, setsideBar }) => {
   const { filterState, filterDispatch } = useFilter()
   const {
     priceValue,
@@ -15,7 +15,7 @@ export const Filter = () => {
   } = filterState
 
   return (
-    <aside className="filters">
+    <aside className={sideBar ? 'filters showFilter' : 'filters hideFilter'}>
       <div className="filter_clear_div">
         <h3>Filters</h3>
         <button
