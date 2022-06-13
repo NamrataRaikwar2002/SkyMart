@@ -81,6 +81,10 @@ input {
   cursor: pointer;
 }
 
+.page_footer {
+  height: 8rem;
+}
+
 @media screen and (max-width: 1000px) {
   .content {
     margin-top: 8rem;

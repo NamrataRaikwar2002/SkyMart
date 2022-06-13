@@ -22,7 +22,6 @@ import product13Img from './product13.jpg';
 import product14Img from './product14.jpg';
 import emptyCart from './emptyCart.svg'
 import emptyWishlist from './emptyWishlist.svg'
-// import feviconImg from './fevicon.ico';
 
 
 

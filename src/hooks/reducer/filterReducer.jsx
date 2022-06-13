@@ -26,6 +26,8 @@ const filterReducer = (filterState, filterAction) => {
         if (formCategoryObj[key] == true) {
           updatedCategory = { ...formCategoryObj, [key]: false }
           return { ...filterState, ...updatedCategory }
+        } else {
+          return { ...filterState }
         }
       }
 

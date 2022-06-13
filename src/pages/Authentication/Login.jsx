@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Navbar } from '../../components'
 import './authentication.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { useAuth } from '../../hooks/context/authContext'
 import { toast } from 'react-toastify'
@@ -12,13 +12,14 @@ export const Login = () => {
   const [loginUser, setLoginUser] = useState({ email: '', password: '' })
   const { email, password } = loginUser
   const { userDispatch } = useAuth()
+  const location = useLocation()
 
   const guestUserHandler = (e) => {
     e.preventDefault()
     setLoginUser({
       ...loginUser,
-      email: 'adarshbalika@gmail.com',
-      password: 'adarshbalika',
+      email: 'admin@gmail.com',
+      password: 'admin123',
     })
   }
 
@@ -44,7 +45,7 @@ export const Login = () => {
               token: response.data.encodedToken,
             },
           })
-          navigate('/')
+          navigate(location?.state?.from?.pathname || -1, { replace: true })
           toast.success('LoggedIn successfully  ')
         } else {
           toast.error('Something went wrong')
@@ -112,7 +113,7 @@ export const Login = () => {
               className="primary_btn btn"
               onClick={guestUserHandler}
             >
-              Guest User
+              Add Guest credentials
             </button>
             <button
               type="submit"

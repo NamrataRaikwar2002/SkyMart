@@ -1,6 +1,6 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
-import { Cart, Home, Login, ProductList, Signup, Wishlist } from './pages'
+import { CartPage, Home, Login, ProductList, Signup, Wishlist } from './pages'
 import MockmanEs from 'mockman-js'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
@@ -38,7 +38,7 @@ function App() {
           path="/cart-page"
           element={
             <RequiresAuth>
-              <Cart />
+              <CartPage />
             </RequiresAuth>
           }
         />

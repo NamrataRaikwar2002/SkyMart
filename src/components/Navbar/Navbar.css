@@ -146,12 +146,38 @@ Link {
         width: 10rem;
     }
 
+    .logoutBtn {
+        display: none;
+    }
+
 }
 
-
-@media screen and (max-width:555px) {
+@media screen and (min-width:555px) {
     .search_bar {
         width: 15rem;
+        padding: 0.5rem;
+    }
+}
+
+@media screen and (max-width:370px) {
+    .search_bar {
+        width: 5rem;
+        padding: 0.5rem;
+    }
+
+}
+
+@media screen and (min-width:769px) {
+    .hamburgerIcon {
+        display: none;
+    }
+
+    .logoutIcon {
+        display: none;
+    }
+
+    .search_bar {
+        width: 25rem;
         padding: 0.5rem;
     }
 }

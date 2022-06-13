@@ -16,10 +16,13 @@ import {
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/context/authContext'
 import { addToWishlist } from '../../service/wishlisService/addToWishlist'
+import { removeFromWishlist } from '../../service/wishlisService/removeFromWishlist'
 
 export const ProductList = () => {
   const [res, setRes] = useState([])
-  const [loader, setloader] = useState('')
+  const [loader, setloader] = useState(false)
+  const [searchResult, setSearchResult] = useState(res || [])
+  const [sideBar, setsideBar] = useState(false)
   const { productState, productDispatch } = useProduct()
   const { wishList, cart } = productState
   const navigate = useNavigate()
@@ -33,55 +36,66 @@ export const ProductList = () => {
 
   const dataFetch = async () => {
     try {
-      setloader('Loading....')
+      setloader(true)
       const response = await axios.get('/api/products')
       setRes(response.data.products)
       setloader('')
+      setSearchResult(response.data.products)
+      return response.data.products
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
   useEffect(dataFetch, [])
 
-  const priceRangeItems = PriceFilter(res, filterState)
+  const priceRangeItems = PriceFilter(searchResult, filterState)
   const ratingItems = RatingFilter(priceRangeItems, filterState)
   const categoryItem = CategoryFilter(ratingItems, filterState)
   const sortedItems = SortFilter(categoryItem, filterState)
 
   const addToCartHandler = (product) => {
-    if(token){
+    if (token) {
       addToCart(product, token, productDispatch)
-    }else{
+    } else {
       navigate('/login-page')
     }
   }
 
   const addToWishlistHandler = (product) => {
     const checkProduct = wishList.some((item) => item._id === product._id)
-    if(token){
+    if (token) {
       if (!checkProduct) {
         addToWishlist(product, token, productDispatch)
       }
-    }else{
+    } else {
       navigate('/login-page')
     }
+  }
+
+  const removeWishlistHandler = (_id) => {
+    removeFromWishlist(_id, token, productDispatch)
   }
 
   return (
     <>
       <main className="product_page">
-        <Navbar />
+        <Navbar
+          setSearchResult={setSearchResult}
+          searchResult={searchResult}
+          products={res}
+          sideBar={sideBar}
+          setsideBar={setsideBar}
+        />
         <section className="all_product content">
-          <Filter />
+          <Filter sideBar={sideBar} setsideBar={setsideBar} />
           <div className="product_list">
             <h3 className="productHeading">
               Total Products: {sortedItems.length}
             </h3>
-            <h1 className="noItemMsg loader">{loader}</h1>
-            {priceValue == 0 ? (
-              <h1 className="noItemMsg">No Products Available </h1>
-            ) : (
+            {loader ? (
+              <h1 className="noItemMsg loader">Loading...</h1>
+            ) : sortedItems.length !== 0 ? (
               <div className="product_list_section ">
                 {sortedItems.map(
                   ({
@@ -102,25 +116,28 @@ export const ProductList = () => {
                           alt="images"
                         />
                         <div className="card_detail">
-                          <button
-                            className="wishlist_icon"
-                            onClick={() =>
-                              addToWishlistHandler({
-                                productImg,
-                                price,
-                                title,
-                                prePrice,
-                                discount,
-                                rating,
-                                quantity,
-                                _id,
-                              })
-                            }
-                          >
+                          <button className="wishlist_icon">
                             {wishList.find((item) => item._id === _id) ? (
-                              <i className="fa-solid fa-heart"></i>
+                              <i
+                                className="fa-solid fa-heart"
+                                onClick={() => removeWishlistHandler(_id)}
+                              ></i>
                             ) : (
-                              <i className="far fa-heart"></i>
+                              <i
+                                className="far fa-heart"
+                                onClick={() =>
+                                  addToWishlistHandler({
+                                    productImg,
+                                    price,
+                                    title,
+                                    prePrice,
+                                    discount,
+                                    rating,
+                                    quantity,
+                                    _id,
+                                  })
+                                }
+                              ></i>
                             )}
                           </button>
                           <p>{title}</p>
@@ -138,7 +155,7 @@ export const ProductList = () => {
                           </div>
                         </div>
 
-                        {cart.find((item) => item._id === _id) ? (
+                        {cart.find((item) => item._id === _id) && token ? (
                           <Link to="/cart-page">
                             <button className="card_btn primary_selected_btn productAddToCartbtn goToCart">
                               Go to Cart
@@ -168,6 +185,8 @@ export const ProductList = () => {
                   },
                 )}
               </div>
+            ) : (
+              <h1 className="noItemMsg">No Products Available </h1>
             )}
           </div>
         </section>

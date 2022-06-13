@@ -1,6 +1,5 @@
 import './Home.css'
 import { Fotter, Navbar } from '../../components'
-import { Link } from 'react-router-dom'
 import {
   bodySprayImg,
   deodorantImg,
@@ -17,41 +16,37 @@ import { NewArrival } from './component/NewArrival'
 const Home = () => {
   return (
     <>
-      <Navbar/>
-
-      <section className="home_section zcontent">
+      <Navbar />
+      <section className="home_section content">
         <div className="landing_area">
           <img src={landingImg} alt="landing image" className="landing_img" />
         </div>
 
         <h2 className="newoffer_heading">Deal of the day</h2>
         <div className="all_features">
-        
-            <LandingFeature
-              key="1"
-              featureCardImg={deodorantImg}
-              featureCardName="Deodorants"
-            />
-         
-            <LandingFeature
-              key="2"
-              featureCardImg={bodySprayImg}
-              featureCardName="Body Spray"
-            />
-         
-            <LandingFeature
-              key="3"
-              featureCardImg={perfumeImg}
-              featureCardName="Perfume"
-            />
-         
+          <LandingFeature
+            key="1"
+            featureCardImg={deodorantImg}
+            featureCardName="Deodorants"
+          />
 
-            <LandingFeature
-              key="4"
-              featureCardImg={fragranceImg}
-              featureCardName="Fragrance"
-            />
-         
+          <LandingFeature
+            key="2"
+            featureCardImg={bodySprayImg}
+            featureCardName="Body Spray"
+          />
+
+          <LandingFeature
+            key="3"
+            featureCardImg={perfumeImg}
+            featureCardName="Perfume"
+          />
+
+          <LandingFeature
+            key="4"
+            featureCardImg={fragranceImg}
+            featureCardName="Fragrance"
+          />
         </div>
         <h1 className="newoffer_heading">New Offers</h1>
 
