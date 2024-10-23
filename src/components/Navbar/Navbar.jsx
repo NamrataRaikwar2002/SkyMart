@@ -10,9 +10,11 @@ const Navbar = ({ setSearchResult, products, sideBar, setsideBar }) => {
   const { productState } = useProduct()
   const { cart, wishList } = productState
   const { userDetail, userDispatch } = useAuth()
-  const { token } = userDetail
+  // const { token } = userDetail
   const [searchInput, setSearchInput] = useState('')
   const location = useLocation()
+
+  const token = localStorage.getItem('token')
 
   const logutHandler = () => {
     localStorage.removeItem('user')

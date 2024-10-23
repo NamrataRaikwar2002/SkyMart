@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
-import { Navbar } from '../../components'
-import './authentication.css'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
-import axios from 'axios'
-import { useAuth } from '../../hooks/context/authContext'
-import { toast } from 'react-toastify'
+import React, { useState } from 'react';
+import { Navbar } from '../../components';
+import './authentication.css';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
+import { useAuth } from '../../hooks/context/authContext';
+import { toast } from 'react-toastify';
+import { API_URL } from '../../utilities/constant';
+
 
 export const Login = () => {
   const navigate = useNavigate()
@@ -31,13 +33,13 @@ export const Login = () => {
   const loginUserHandler = async (email, password) => {
     if (email && password) {
       try {
-        const response = await axios.post('/api/auth/login', {
+        const response = await axios.post(`${API_URL}/api/auth/login`, {
           email,
           password,
         })
         if (response.status === 200) {
           localStorage.setItem('user', JSON.stringify(response.data.foundUser))
-          localStorage.setItem('token', response.data.encodedToken)
+          localStorage.setItem('token', response.data.token)
           userDispatch({
             type: 'LOGIN',
             payload: {

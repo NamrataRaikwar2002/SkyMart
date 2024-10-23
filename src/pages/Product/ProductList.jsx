@@ -16,7 +16,8 @@ import {
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/context/authContext'
 import { addToWishlist } from '../../service/wishlisService/addToWishlist'
-import { removeFromWishlist } from '../../service/wishlisService/removeFromWishlist'
+import { removeFromWishlist } from '../../service/wishlisService/removeFromWishlist';
+import { API_URL } from '../../utilities/constant'
 
 export const ProductList = () => {
   const [res, setRes] = useState([])
@@ -37,13 +38,13 @@ export const ProductList = () => {
   const dataFetch = async () => {
     try {
       setloader(true)
-      const response = await axios.get('/api/products')
+      const response = await axios.get(`${API_URL}/products`)
       setRes(response.data.products)
       setloader('')
       setSearchResult(response.data.products)
       return response.data.products
     } catch (error) {
-      console.error(error)
+      console.error(error.message,'error')
     }
   }
 

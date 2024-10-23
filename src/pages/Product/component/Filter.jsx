@@ -1,6 +1,6 @@
 import React from 'react'
 import { useFilter } from '../../../hooks/context/filterContext'
-import { products } from '../../../backend/db/products'
+// import { products } from '../../../backend/db/products'
 
 export const Filter = ({ sideBar, setsideBar }) => {
   const { filterState, filterDispatch } = useFilter()

@@ -3,7 +3,9 @@ import { Navbar } from '../../components'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
-import { useAuth } from '../../hooks/context/authContext'
+import { useAuth } from '../../hooks/context/authContext';
+import { API_URL } from '../../utilities/constant'
+
 
 export const Signup = () => {
   const [inputType, setinputType] = useState({
@@ -23,7 +25,7 @@ export const Signup = () => {
 
   const signupHandler = (e) => {
     e.preventDefault()
-    signupUserHandler(email, password, firstName)
+    signupUserHandler(email, password, firstName, lastName)
   }
 
   const checkPassword = () => {
@@ -34,21 +36,22 @@ export const Signup = () => {
     }
   }
 
-  const signupUserHandler = async (email, password, firstName) => {
+  const signupUserHandler = async (email, password, firstName, lastName) => {
     if (firstName && lastName && email && password && confirmPassword) {
       if (checkPassword()) {
         try {
-          const response = await axios.post('/api/auth/signup', {
+          const response = await axios.post(`${API_URL}/api/auth/signup`, {
             email,
             password,
             firstName,
+            lastName
           })
           if (response.status === 201) {
             localStorage.setItem(
               'user',
               JSON.stringify(response.data.createdUser),
             )
-            localStorage.setItem('token', response.data.encodedToken)
+            localStorage.setItem('token', response.data.token)
             navigate(-2)
             userDispatch({
               type: 'SIGNUP',
